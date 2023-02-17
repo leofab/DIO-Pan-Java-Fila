@@ -4,7 +4,7 @@ public class No {
 	private Object object;
 	private No refNo;
 	
-	public No(Object object, No refNo) {
+	public No(Object object) {
 		super();
 		this.object = object;
 		this.refNo = null;
