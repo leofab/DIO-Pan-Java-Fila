@@ -1,21 +1,22 @@
 package dio.java.main;
 
-public class Fila {
-	private No refNoEntradaFila;
+public class Fila<T> {
+	private No<T> refNoEntradaFila;
 
 	public Fila() {
 		this.refNoEntradaFila = null;
 	}
 	
-	public void enqueue(Object obj) {
-		No novoNo = new No(obj);
+	public void enqueue(T obj) {
+		No<T> novoNo = new No<T>(obj);
 		novoNo.setRefNo(refNoEntradaFila);
 		refNoEntradaFila = novoNo;
 	}
 	
-	public Object first() {
+	@SuppressWarnings("unchecked")
+	public T first() {
 		if(!this.isEmpty()) {
-			No primeiroNo = refNoEntradaFila;
+			No<T> primeiroNo = refNoEntradaFila;
 			while(true) {
 				if(primeiroNo.getRefNo() != null) {
 					primeiroNo = primeiroNo.getRefNo();
@@ -23,15 +24,16 @@ public class Fila {
 					break;
 				}
 			}
-			return primeiroNo.getObject();
+			return (T) primeiroNo.getObject();
 		}
 		return null;
 	}
 	
-	public Object dequeue() {
+	@SuppressWarnings("unchecked")
+	public T dequeue() {
 		if(!this.isEmpty()) {
-			No primeiroNo = refNoEntradaFila;
-			No noAuxiliar = refNoEntradaFila;
+			No<T> primeiroNo = refNoEntradaFila;
+			No<T> noAuxiliar = refNoEntradaFila;
 			while(true) {
 				if(primeiroNo.getRefNo() != null) {
 					noAuxiliar = primeiroNo;
@@ -41,7 +43,7 @@ public class Fila {
 					break;
 				}
 			}
-			return primeiroNo.getObject();
+			return (T) primeiroNo.getObject();
 		}
 		return null;
 	}
@@ -53,7 +55,7 @@ public class Fila {
 	@Override
 	public String toString() {
 		String stringRetorno= "";
-		No noAuxiliar = refNoEntradaFila;
+		No<T> noAuxiliar = refNoEntradaFila;
 		
 		
 		if(refNoEntradaFila != null) {
