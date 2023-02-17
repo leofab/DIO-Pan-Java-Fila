@@ -39,6 +39,7 @@ public class Fila {
 					break;
 				}
 			}
+			return primeiroNo;
 		}
 		return null;
 	}
@@ -47,4 +48,26 @@ public class Fila {
 		return refNoEntradaFila == null? true: false;
 	}
 	
+	@Override
+	public String toString() {
+		String stringRetorno= "";
+		No noAuxiliar = refNoEntradaFila;
+		
+		
+		if(refNoEntradaFila != null) {
+			while(true) {
+				stringRetorno += "[No{objeto = " + noAuxiliar.getObject() + "}] ---->";
+				noAuxiliar = noAuxiliar.getRefNo();
+				if(noAuxiliar.getRefNo() != null) {
+					noAuxiliar = noAuxiliar.getRefNo();
+				}else {
+					stringRetorno += "null";
+					break;
+				}
+			}
+		}else {
+			stringRetorno = "null";
+		}
+		return stringRetorno;
+	}
 }
