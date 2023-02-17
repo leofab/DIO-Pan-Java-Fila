@@ -15,5 +15,13 @@ public class Main {
 		System.out.println(minhaFila);
 		minhaFila.enqueue(new No("quarto"));
 		System.out.println(minhaFila);
+		
+		System.out.println(minhaFila.dequeue());
+		
+		System.out.println(minhaFila);
+		
+		minhaFila.enqueue(new No("ultimo"));
+		System.out.println(minhaFila);
+		System.out.println(minhaFila.first());
 	}
 }
